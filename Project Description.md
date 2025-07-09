@@ -34,7 +34,7 @@ Voters who are away from their home state—such as **students**, **working prof
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 | Component          | Technology                                                           |
 | ------------------ | -------------------------------------------------------------------- |
