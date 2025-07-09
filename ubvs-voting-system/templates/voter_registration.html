@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Election Commission logo styling */
+        .gov-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: auto;
+        }
+
+        /* Main container styling */
+        .container {
+            width: 95%;
+            max-width: 600px;
+            height: auto;
+            padding: 30px 20px;
+            background: url('{{ url_for('static', filename='images/dashboard_background.jpg') }}') no-repeat center center;
+            background-size: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Form and heading styling */
+        h2 {
+            font-size: 1.8em;
+            color: #003366;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+
+        /* Label styling with box background */
+        label {
+            background-color: #1a73e8;
+            color: #fff;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+        }
+
+        /* Flex container for label and input pair */
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* Submit button styling */
+        button[type="submit"] {
+            padding: 15px;
+            background-color: #1a73e8;
+            color: #ffffff;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #155bb5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Election Commission logo -->
+    <img src="{{ url_for('static', filename='images/election_commision_logo.png') }}" alt="Election Commission Logo" class="gov-logo">
+
+    <div class="container">
+        <h2>Voter Registration</h2>
+        <form method="POST">
+            <!-- Name field -->
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <!-- Date of Birth field -->
+            <div class="input-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <!-- Father's Name field -->
+            <div class="input-group">
+                <label for="father_name">Father's Name:</label>
+                <input type="text" id="father_name" name="father_name" required>
+            </div>
+
+            <!-- Aadhar Number field with validation -->
+            <div class="input-group">
+                <label for="aadhar_number">Aadhar Number:</label>
+                <input type="text" id="aadhar_number" name="aadhar_number" pattern="\d{12}" title="Aadhar number must be 12 digits" required>
+            </div>
+
+            <!-- Address field -->
+            <div class="input-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <!-- Biometric field -->
+            <div class="input-group">
+                <label for="biometric">Biometric:</label>
+                <input type="text" id="biometric" name="biometric" required>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

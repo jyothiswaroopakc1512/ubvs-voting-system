@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Voting</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Voting Globally</h2>
+        <form method="POST">
+            <label>State:</label>
+            <input type="text" name="state" required>
+
+            <label>City:</label>
+            <input type="text" name="city" required>
+
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Voter ID:</label>
+            <input type="text" name="voter_id" required>
+
+            <label>Biometric Details:</label>
+            <input type="text" name="biometric" required>
+
+            <label>Officer's Biometric:</label>
+            <input type="text" name="officer_biometric" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

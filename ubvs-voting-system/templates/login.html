@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - UBVS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url("{{ url_for('static', filename='images/dashboard_background.jpg') }}") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            position: relative;
+        }
+
+        /* Logo in top-right corner */
+        .gov-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: auto;
+        }
+
+        /* Login Container with increased width */
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            width: 600px; /* Increased width */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Header */
+        .login-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #003366;
+        }
+
+        /* Form Styling */
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #4b8bf5;
+        }
+
+        /* Button Styling */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .login-btn:hover {
+            background-color: #155bb5;
+        }
+
+        /* Footer Links */
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #4b8bf5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo Image in Top Right -->
+    <img src="{{ url_for('static', filename='images/election_commision_logo.png') }}" alt="Election Commission Logo" class="gov-logo">
+
+    <div class="login-container">
+        <!-- Header -->
+        <h2>Login to UBVS</h2>
+
+        <!-- Login Form -->
+        <form action="/login" method="POST">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter your username" required />
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required />
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <!-- Footer Links -->
+        <div class="footer">
+            <p><a href="#">Sign Up</a> | <a href="#">Forgot Password?</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

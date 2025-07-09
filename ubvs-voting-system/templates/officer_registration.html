@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officer Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Election Commission logo styling (top-right corner) */
+        .gov-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px; /* Increased size of the logo */
+            height: auto;
+        }
+
+        /* Officer registration container */
+        .container {
+            width: 90%; /* Expanded horizontally */
+            max-width: 1000px;
+            height: auto;
+            background: url('{{ url_for('static', filename='images/dashboard_background.jpg') }}') no-repeat center center;
+            background-size: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 50px 20px; /* Increased vertical padding for more space */
+            text-align: center;
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.85); /* Ensures readability */
+        }
+
+        /* Form title */
+        h2 {
+            font-size: 2.5em;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Form elements container */
+        .form-elements {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Two columns: 1 for labels, 2 for input fields */
+            gap: 20px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        /* Label box styling */
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #003366; /* Blue background for labels */
+            color: white;
+            padding: 8px 12px; /* Reduced padding for smaller box size */
+            font-size: 1em; /* Reduced font size */
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        /* Input box styling */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+
+        /* Submit button styling */
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background-color: #1a73e8; /* Ashoka Chakra blue */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 20px; /* Added space above button */
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #155bb5;
+            transform: translateY(-3px);
+        }
+
+        /* Button active effect */
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Election Commission logo placed in the top-right corner -->
+    <img src="{{ url_for('static', filename='images/election_commision_logo.png') }}" alt="Election Commission Logo" class="gov-logo">
+
+    <div class="container">
+        <h2>Officer Registration</h2>
+        <form method="POST">
+            <div class="form-elements">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="aadhar">Aadhar Number:</label>
+                <input type="text" id="aadhar" name="aadhar" pattern="\d{12}" title="Aadhar number must be 12 digits" required>
+
+                <label for="employee_id">Employee ID:</label>
+                <input type="text" id="employee_id" name="employee_id" required>
+
+                <label for="biometric">Biometric Details (simulated):</label>
+                <input type="text" id="biometric" name="biometric" required>
+            </div>
+
+            <!-- Register button placed below the last input field with some space -->
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+</body>
+</html>

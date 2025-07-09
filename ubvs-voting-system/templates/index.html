@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to UBVS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Reset and base styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Government logo and links container */
+        .header-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: right;
+        }
+
+        .gov-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 8px;
+        }
+
+        /* Main container with background image */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background: url("{{ url_for('static', filename='images/dashboard_background.jpg') }}") no-repeat center center;
+            background-size: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 50px 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.85); /* Ensures readability */
+        }
+
+        /* Title and text */
+        h1 {
+            font-size: 2.5em;
+            color: #003366;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            font-size: 1.1em;
+            color: #ffffff;
+            background-color: #1a73e8;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #155bb5;
+            transform: translateY(-3px);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Support and contact links styling */
+        .header-links {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .header-links a {
+            color: #1a73e8;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .header-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo and links in the top-right corner -->
+    <div class="header-right">
+        <img src="{{ url_for('static', filename='images/election_commision_logo.png') }}" alt="Election Commission Logo" class="gov-logo">
+        <div class="header-links">
+            <a href="{{ url_for('dashboard') }}">Support</a>
+            
+            
+            
+        </div>
+    </div>
+
+    <!-- Main container with background image -->
+    <div class="container">
+        <h1>Welcome to UBVS</h1>
+        <p>Your identity matters. Vote with security.</p>
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+    </div>
+</body>
+</html>

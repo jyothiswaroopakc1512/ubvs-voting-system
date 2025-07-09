@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBVS System</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Election Commission logo styling (top-right corner) */
+        .gov-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: auto;
+        }
+
+        /* Main container styling */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            height: 60vh;
+            background: url('{{ url_for('static', filename='images/dashboard_background.jpg') }}') no-repeat center center;
+            background-size: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 50px 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            background-color: rgba(255, 255, 255, 0.85);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.5s ease;
+        }
+
+        /* Hidden container */
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Text and button styling for first container */
+        p.welcome {
+            font-size: 2.5em;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 55px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            background: #1a73e8;
+            border-radius: 8px;
+            transition: transform 0.2s, background 0.3s;
+            font-size: 1.1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        a:hover {
+            background: #155bb5;
+            transform: translateY(-3px);
+        }
+
+        a:active {
+            transform: scale(0.98);
+        }
+
+        /* Navigation text styling */
+        .nav-text {
+            font-size: 1em;
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+            position: absolute;
+            bottom: 20px;
+        }
+
+        .next-text { right: 20px; }
+        .previous-text { left: 20px; }
+
+        /* Voter Data Container Styling */
+        .voter-data-title {
+            font-size: 1.8em;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .voter-data-button {
+            display: block;
+            width: 80%;
+            max-width: 400px;
+            margin: 10px auto;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .voter-data-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Election Commission logo -->
+    <img src="{{ url_for('static', filename='images/election_commision_logo.png') }}" alt="Election Commission Logo" class="gov-logo">
+
+    <!-- First Container -->
+    <div class="container" id="firstContainer">
+        <p class="welcome">Welcome to the UBVS System!</p>
+        <h2>Select an option:</h2>
+        <div class="options-grid">
+            <a href="/voter_registration">Voter Registration</a>
+            <a href="/officer_registration">Officer Registration</a>
+            <a href="/voting_local">Local Voting</a>
+            <a href="/voting_global">Global Voting</a>
+        </div>
+        <!-- Next text link to show the next container -->
+        <span class="nav-text next-text" onclick="showNextContainer()">Next</span>
+    </div>
+
+    <!-- Second Container (Voter Data) -->
+    <div class="container hidden" id="secondContainer">
+        <p class="voter-data-title">Voter Data</p>
+        <a href="/voters_registered_list" class="voter-data-button">Registered Voters List</a>
+        <a href="/voters_voted_list" class="voter-data-button">Voters Casted Vote List</a>
+        <!-- Previous text link to show the first container -->
+        <span class="nav-text previous-text" onclick="showPreviousContainer()">Previous</span>
+    </div>
+
+    <script>
+        function showNextContainer() {
+            const firstContainer = document.getElementById('firstContainer');
+            const secondContainer = document.getElementById('secondContainer');
+            
+            // Hide the first container, show the second container with fade effect
+            firstContainer.classList.add('hidden');
+            secondContainer.classList.remove('hidden');
+        }
+
+        function showPreviousContainer() {
+            const firstContainer = document.getElementById('firstContainer');
+            const secondContainer = document.getElementById('secondContainer');
+            
+            // Hide the second container, show the first container with fade effect
+            secondContainer.classList.add('hidden');
+            firstContainer.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
